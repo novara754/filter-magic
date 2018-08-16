@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
 			filter::greyscale(image);
 		else if (option == "rotate") {
 			if (i + 1 >= argc) {
-					error::missing_argument("rotate", "angle");
+				error::missing_argument("rotate", "angle");
 			}
 			float angle = atof(argv[++i]);
 			if (angle == 0) continue;
