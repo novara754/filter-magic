@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 #include <opencv2/opencv.hpp>
 
 using namespace cv;
@@ -11,6 +12,12 @@ void filter_greyscale(Mat &image) {
 			for (int i = 0; i < 3; i++) pixel[i] = avg;
 		}
 	}
+}
+
+void filter_rotate(Mat &image, float angle) {
+	Point2f center(image.rows / 2, image.cols / 2);
+	Mat rotation = getRotationMatrix2D(center, angle, 1.0);
+	warpAffine(image, image, rotation, image.size());
 }
 
 int main(int argc, char **argv) {
@@ -30,9 +37,21 @@ int main(int argc, char **argv) {
 		std::string option(argv[i]);
 		if (option == "grey" || option == "greyscale")
 			filter_greyscale(image);
+		else if (option == "rotate") {
+			if (i + 1 >= argc) {
+				std::cerr << "Missing argument: `rotate' expects an argument of `degrees'" << std::endl;
+				return -1;
+			}
+			float angle = atof(argv[++i]);
+			if (angle == 0) continue;
+			filter_rotate(image, angle);
+		}
 		else
 			std::cerr << "Unknown filter: " << option << std::endl;
 	}
+
+	std::cout << "Writing image to output.png..." << std::endl;
+	imwrite("output.png", image);
 
 	return 0;
 }
