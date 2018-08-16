@@ -3,7 +3,8 @@
 
 #include <string>
 
-namespace error {
+namespace log {
+	void info(std::string message);
 	void error(std::string name, std::string message);
 	void fatal(std::string name, std::string message);
 	void missing_argument(std::string command, std::string parameter);
