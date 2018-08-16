@@ -26,8 +26,13 @@ int main(int argc, char **argv) {
 		return -1;
 	}
 
-	filter_greyscale(image);
-	imwrite("output.png", image);
+	for (int i = 2; i < argc; i++) {
+		std::string option(argv[i]);
+		if (option == "grey" || option == "greyscale")
+			filter_greyscale(image);
+		else
+			std::cerr << "Unknown filter: " << option << std::endl;
+	}
 
 	return 0;
 }
