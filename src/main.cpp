@@ -31,6 +31,17 @@ int main(int argc, char **argv) {
 			if (angle == 0) continue;
 			filter::rotate(image, angle);
 		}
+		else if (option == "scale") {
+			if (i + 1 >= argc) {
+				log::missing_argument("scale", "width,height");
+			}
+			string input(argv[++i]);
+			int i = input.find(',');
+			float width = atof(input.substr(0, i).c_str());
+			float height = atof(input.substr(i + 1, input.size() - i).c_str());
+			if (width == 1 && height == 1) continue;
+			filter::scale(image, width, height);
+		}
 		else if (option == "output") {
 			out_file = argv[++i];
 		}

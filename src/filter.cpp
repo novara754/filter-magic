@@ -18,3 +18,7 @@ void filter::rotate(Mat &image, float angle) {
 	warpAffine(image, image, rotation, image.size());
 }
 
+void filter::scale(Mat &image, float width, float height) {
+	resize(image, image, Size(), width, height);
+}
+

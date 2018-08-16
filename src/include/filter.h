@@ -6,6 +6,7 @@
 namespace filter {
 	void greyscale(cv::Mat &source);
 	void rotate(cv::Mat &source, float angle);
+	void scale(cv::Mat &source, float width, float height);
 }
 
 #endif
