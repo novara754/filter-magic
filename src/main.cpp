@@ -4,6 +4,7 @@
 
 using namespace cv;
 
+void missing_argument_error(std::string command, std::string parameter);
 void filter_greyscale(Mat &image);
 void filter_rotate(Mat &image, float angle);
 
@@ -26,8 +27,7 @@ int main(int argc, char **argv) {
 			filter_greyscale(image);
 		else if (option == "rotate") {
 			if (i + 1 >= argc) {
-				std::cerr << "Missing argument: `rotate' expects an argument of `degrees'" << std::endl;
-				return -1;
+				missing_argument_error("rotate", "angle");
 			}
 			float angle = atof(argv[++i]);
 			if (angle == 0) continue;
@@ -41,6 +41,11 @@ int main(int argc, char **argv) {
 	imwrite("output.png", image);
 
 	return 0;
+}
+
+void missing_argument_error(std::string command, std::string parameter) {
+		std::cerr << "Missing argument: Command `" << command << "' expects an argument of `" << parameter << "'." << std::endl;
+		exit(-1);
 }
 
 void filter_rotate(Mat &image, float angle) {
