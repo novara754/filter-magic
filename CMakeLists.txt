@@ -3,6 +3,6 @@ project(FilterMagic)
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 include_directories(${PROJECT_SOURCE_DIR}/src/include)
-add_executable(FilterMagic src/main.cpp src/filter.cpp)
+add_executable(FilterMagic src/main.cpp src/filter.cpp src/error.cpp)
 target_link_libraries(FilterMagic ${OpenCV_LIBS})
 
