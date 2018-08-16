@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
 			filter::rotate(image, angle);
 		}
 		else
-			std::cerr << "Unknown filter: " << option << std::endl;
+			error::error("Unknown filter", option);
 	}
 
 	std::cout << "Writing image to output.png..." << std::endl;
