@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
 		string option(argv[i]);
 		if (option == "grey" || option == "greyscale")
 			filter::greyscale(image);
-		if (option == "sepia")
+		else if (option == "sepia")
 			filter::sepia(image);
 		else if (option == "rotate") {
 			if (i + 1 >= argc) {
