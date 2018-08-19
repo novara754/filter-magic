@@ -21,19 +21,18 @@ int main(int argc, char **argv) {
 
 	for (int i = 2; i < argc; i++) {
 		string option(argv[i]);
-		if (option == "grey" || option == "greyscale")
+		if (option == "grey" || option == "greyscale") {
 			filter::greyscale(image);
-		else if (option == "sepia")
+		} else if (option == "sepia") {
 			filter::sepia(image);
-		else if (option == "rotate") {
+		} else if (option == "rotate") {
 			if (i + 1 >= argc) {
 				log::missing_argument("rotate", "angle");
 			}
 			float angle = atof(argv[++i]);
 			if (angle == 0) continue;
 			filter::rotate(image, angle);
-		}
-		else if (option == "scale") {
+		} else if (option == "scale") {
 			if (i + 1 >= argc) {
 				log::missing_argument("scale", "width,height");
 			}
@@ -43,12 +42,11 @@ int main(int argc, char **argv) {
 			float height = atof(input.substr(i + 1, input.size() - i).c_str());
 			if (width == 1 && height == 1) continue;
 			filter::scale(image, width, height);
-		}
-		else if (option == "output") {
+		} else if (option == "output") {
 			out_file = argv[++i];
-		}
-		else
+		} else {
 			log::error("Unknown filter", option);
+		}
 	}
 
 	std::stringstream message;
