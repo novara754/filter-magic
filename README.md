@@ -18,3 +18,5 @@ As of now, the supported filters are:
  - `rotate <degrees>`
  - `scale <width>,<height>`
 
+You can also add `output <file>` anywhere int the options to change the output file.
+
