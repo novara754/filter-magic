@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
 
 	for (int i = 2; i < argc; i++) {
 		string option(argv[i]);
-		if (option == "grey" || option == "greyscale") {
+		if (option == "grey" || option == "greyscale" || option == "gray" || option == "grayscale") {
 			filter::greyscale(image);
 		} else if (option == "sepia") {
 			filter::sepia(image);
