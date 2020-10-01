@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
 			float angle = atof(argv[++i]);
 			if (angle == 0) continue;
 			filter::rotate(image, angle);
-		} else if (option == "scale") {
+		} else if (option == "scale" || option == "resize") {
 			if (i + 1 >= argc) {
 				log::missing_argument("scale", "width,height");
 			}
